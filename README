@@ -1,0 +1,14 @@
+FILE.pcap and FILE2.pcap
+Sample capture files. Soon, will use live modification instead
+
+internalDevice.py
+Code that will be run on computers within the network
+
+networkEdge.py
+Code that will be on the machine between the router/switch and outside network
+
+Device List
+List of all known IPs on the network. Is used to create NodeIDs
+
+scapyTest.py
+Test file, please ignore
