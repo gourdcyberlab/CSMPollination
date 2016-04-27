@@ -19,15 +19,15 @@ pkts=rdpcap("FILE2.pcap")
 ip = get_ip_address('eth0')
 
 for pkt in pkts:
+	del pkt.checksum
 	if IP in pkt:
-		print pkt.summary()
 		#Add Marker at Source
 		if pkt[IP].src == ip:
 			pkt = pkt/"gourd"
 		#Add Node Number
 		pkt = pkt/NODE
 		#Delete Marker at Destination
-		if pkt[IP].src == ip:
+		if pkt[IP].dst  == ip:
 			pckstr = str(pkt)
 			search = pckstr.find('gourd')
 			if search != -1:
