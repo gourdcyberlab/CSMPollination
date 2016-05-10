@@ -5,6 +5,7 @@ import binascii
 
 from scapy.all import *
 from scapy.utils import rdpcap
+from scapy.layers.inet import IP
 
 
 def get_ip_address(ifname):
@@ -30,6 +31,7 @@ routeFile = open('Routes','w')
 
 for pkt in pkts:
 	if IP in pkt:
+		del pkt.chksum
 		#Add Marker at Source
 		if pkt[IP].src == ip:
 			pkt = pkt/"gourd"
@@ -42,6 +44,8 @@ for pkt in pkts:
 			if search != -1:
 				route = pckstr[search:]
 				pckstr = pckstr[:search]
+				#Record the route of the packet to file
 				routeFile.write(route)
 				routeFile.write('\n')
-
+			pkt = pkt.__class__(pckstr)
+	#send(pkt)
