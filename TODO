@@ -1,0 +1,5 @@
+TODO
+
+Automatically get list of IP addresses in network
+Be able to seek packets live instead of using PCAP files
+Create an admin that collects all the routes from the nodes
